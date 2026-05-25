@@ -11,8 +11,8 @@ import bodyParser from "body-parser";
 
 
 
-const SITE_PASSWORD = "enter_passowrd_here";
-const groq_api      = "enter_api_here";
+const SITE_PASSWORD = process.env.SITE_PASSWORD;
+const groq_api      = process.env.GROQ_API;
 
 
 const bare = createBareServer("/bare/");
