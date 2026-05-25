@@ -11,8 +11,8 @@ import bodyParser from "body-parser";
 
 
 
-const SITE_PASSWORD = "ryanisafurry";
-const groq_api      = "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";
+const SITE_PASSWORD = "enter_passowrd_here";
+const groq_api      = "enter_api_here";
 
 
 const bare = createBareServer("/bare/");
@@ -20,7 +20,7 @@ const app  = express();
 
 app.use(bodyParser.json());
 app.use(session({
-  secret: "ksf-session-secret-change-me",
+  secret: "changethistojustarandomkeyboardspamgit push -u origin main",
   resave: false,
   saveUninitialized: false,
   cookie: { httpOnly: true, sameSite: "strict" }
