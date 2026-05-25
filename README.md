@@ -4,7 +4,7 @@
  
 -4,000 games
  
--Uses ultraviolet, a fast and secure proxy
+-Uses ultraviolet
 
 -Clean UI
 
