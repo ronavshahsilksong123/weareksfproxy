@@ -20,7 +20,7 @@ const app  = express();
 
 app.use(bodyParser.json());
 app.use(session({
-  secret: "changethistojustarandomkeyboardspamgit push -u origin main",
+  secret: "changethistojustarandomkeyboardspamgit",
   resave: false,
   saveUninitialized: false,
   cookie: { httpOnly: true, sameSite: "strict" }
