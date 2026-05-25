@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KSF - Terms of Service</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-page.css" />
+  <script src="/global/all.js"></script>
+  <script src="/uv/uv.bundle.js" defer></script>
+  <script src="/uv/uv.config.js" defer></script>
+  <script src="/register-sw.js" defer></script>
+  <style>
+    body { margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    #tos-frame {
+      width: 100%;
+      height: calc(100vh - 60px);
+      border: none;
+      margin-top: 60px;
+    }
+    #top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    #top-bar a { font-family:'Schoolbell',cursive; font-size:1rem; }
+    #top-bar span { font-family:'Schoolbell',cursive; font-size:1.1rem; margin-left:1rem; opacity:0.8; }
+  </style>
+</head>
+<body>
+  <div id="top-bar">
+    <a id="back-btn" href="/">&#8592; Home</a>
+    <span>Terms of Service</span>
+  </div>
+  <iframe id="tos-frame" src="" title="Terms of Service"></iframe>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wait for UV config to load then proxy the TOS page
+      function tryLoad() {
+        if (typeof __uv$config !== 'undefined') {
+          const encoded = __uv$config.encodeUrl('https://killsecurly.com/tos');
+          document.getElementById('tos-frame').src = '/tab?page=' + encoded;
+        } else {
+          setTimeout(tryLoad, 100);
+        }
+      }
+      tryLoad();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KSF Settings</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-page.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="/global/all.js"></script>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <script src="/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js",{"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.4,"random":false},"size":{"value":3,"random":true},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},"move":{"enable":true,"speed":4,"direction":"none","random":true,"out_mode":"out"}},"interactivity":{"detect_on":"window","events":{"onhover":{"enable":true,"mode":"push"},"resize":true},"modes":{"push":{"particles_nb":3}}},"retina_detect":true});
+  </script>
+
+  <a id="back-btn" href="/">&#8592; Home</a>
+  <p class="page-title">S e t t i n g s</p>
+
+  <div class="settings-grid">
+
+    <div class="setting-card">
+      <p class="setting-label">Auto Cloaker
+        <span class="info-badge">i
+          <span class="tooltip-text">Automatically opens in about:blank to hide from history</span>
+        </span>
+      </p>
+      <button id="autoABToggle"
+        onclick="localStorage.setItem('autoAB', localStorage.getItem('autoAB') == 'false'); this.innerHTML = localStorage.getItem('autoAB') == 'true' ? 'Disable' : 'Enable'">
+      </button>
+      <script>document.getElementById("autoABToggle").innerHTML = localStorage.getItem('autoAB') == 'true' ? 'Disable' : 'Enable';</script>
+    </div>
+
+    <div class="setting-card">
+      <p class="setting-label">Tab Cloak</p>
+      <div class="ksf-dropdown">
+        <button class="drop-btn">Select &#9662;</button>
+        <div class="drop-content">
+          <a onclick="setTabCloak('docs')">Google Docs</a>
+          <a onclick="setTabCloak('google')">Google</a>
+          <a onclick="setTabCloak('classroom')">Google Classroom</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="setting-card">
+      <p class="setting-label">Open Cloaked</p>
+      <button id="ABCloakButton"
+        onclick="if(inIframe){window.top.postMessage('cancelABCloak','*')}else{ABCloak(false)}">
+      </button>
+      <script>document.getElementById("ABCloakButton").innerHTML = inIframe ? 'Deactivate' : 'Activate';</script>
+    </div>
+
+    <div class="setting-card">
+      <p class="setting-label">Search Engine</p>
+      <div class="ksf-dropdown">
+        <button class="drop-btn" id="se-label">Select &#9662;</button>
+        <div class="drop-content">
+          <a onclick="setSearchEngine('google','https://www.google.com/search?q=%s')">Google</a>
+          <a onclick="setSearchEngine('bing','https://www.bing.com/search?q=%s')">Bing</a>
+          <a onclick="setSearchEngine('duckduckgo','https://duckduckgo.com/?q=%s')">DuckDuckGo</a>
+          <a onclick="setSearchEngine('brave','https://search.brave.com/search?q=%s')">Brave</a>
+          <a onclick="setSearchEngine('yahoo','https://search.yahoo.com/search?p=%s')">Yahoo</a>
+          <a onclick="setSearchEngine('ecosia','https://www.ecosia.org/search?q=%s')">Ecosia</a>
+        </div>
+      </div>
+    </div>
+
+  <script src="index.js" defer></script>
+  <script>
+    const seNames = { google:"Google", bing:"Bing", duckduckgo:"DuckDuckGo", brave:"Brave", yahoo:"Yahoo", ecosia:"Ecosia" };
+    const storedSE = localStorage.getItem("ksf_search_engine_name");
+    if (storedSE && seNames[storedSE]) document.getElementById("se-label").textContent = seNames[storedSE] + " \u25be";
+
+    function setSearchEngine(name, template) {
+      localStorage.setItem("ksf_search_engine", template);
+      localStorage.setItem("ksf_search_engine_name", name);
+      document.getElementById("se-label").textContent = (seNames[name] || name) + " \u25be";
+    }    }  </script>
+</body>
+</html>

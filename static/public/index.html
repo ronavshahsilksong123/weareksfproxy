@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KSF Proxy</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/global/loadingscreen.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="uv/uv.bundle.js" defer></script>
+  <script src="uv/uv.config.js" defer></script>
+  <script src="register-sw.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="index.js" defer></script>
+  <script src="global/all.js" defer></script>
+  <script src="tabs.js" defer></script>
+</head>
+<body>
+
+  
+  <div id="password-gate">
+    <div id="pg-particles"></div>
+    <div id="pg-box">
+      <h1 class="schoolbell-regular" style="font-size:60px;margin-bottom:8px;">K S F</h1>
+      <p id="pg-subtitle">Enter password to continue</p>
+      <input id="pg-input" type="password" placeholder="Password..." autocomplete="off" />
+      <button id="pg-btn" onclick="checkPassword()">Enter</button>
+      <p id="pg-error"></p>
+    </div>
+  </div>
+
+  
+  <div id="main-app" style="display:none;">
+
+    
+    <div id="proxy-div" class="hide-proxy-div" style="display:none;">
+      <div id="proxy-nav-bar">
+        <div id="tabBarTabs"></div>
+        <div id="newTab" onclick="newTab()">
+          <i class="material-icons" style="line-height:35px;font-size:20px;">add</i>
+        </div>
+        <div id="homeBtn" onclick="goHome();">
+          <i class="material-icons" style="line-height:35px;font-size:20px;">home</i>
+        </div>
+      </div>
+      <span id="frames"></span>
+    </div>
+
+    
+    <div id="particles-js"></div>
+    <script src="particles.min.js"></script>
+    <script>
+      particlesJS("particles-js",{"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false}},"interactivity":{"detect_on":"window","events":{"onhover":{"enable":true,"mode":"push"},"onclick":{"enable":false},"resize":true},"modes":{"push":{"particles_nb":4}}},"retina_detect":true});
+    </script>
+
+    
+    <div id="board">
+      <h1 class="schoolbell-regular">K S F Proxy</h1>
+
+      
+      <div id="clock-widget">
+        <span id="clock-time"></span>
+        <span id="clock-date"></span>
+      </div>
+
+      <form id="uv-form">
+        <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+        <input id="uv-address" autocomplete="off" type="text" placeholder="Search or Enter a URL..." />
+      </form>
+
+      <br><br>
+
+      <div id="bookmarks">
+        
+      </div>
+
+      <br>
+
+      <div id="buttons-extra">
+        <button class="category-btn" onclick="window.location.href='/games'">
+          <i class="fa fa-gamepad" style="font-size:34px;color:rgba(255,255,255,0.85);"></i>
+          <p>Games</p>
+        </button>
+        <button class="category-btn" onclick="window.location.href='/apps'">
+          <span class="material-icons" style="font-size:34px;color:rgba(255,255,255,0.85);">apps</span>
+          <p>Apps</p>
+        </button>
+        <button class="category-btn" onclick="window.location.href='/settings'">
+          <i class="fa fa-gear" style="font-size:34px;color:rgba(255,255,255,0.85);"></i>
+          <p>Settings</p>
+        </button>
+        <button class="category-btn" onclick="quickNav('https://monochrome.tf/')">
+          <i class="fa fa-music" style="font-size:34px;color:rgba(255,255,255,0.85);"></i>
+          <p>Music</p>
+        </button>
+        <button class="category-btn" id="ai-btn" onclick="openAIChat()">
+          <i class="fa fa-robot" style="font-size:34px;color:rgba(255,255,255,0.85);"></i>
+          <p>AI</p>
+        </button>
+      </div>
+    </div>
+
+    
+    <div class="loadcenter">
+      <div class="loading-container" id="loadingScreen">
+        <div class="loading-text">
+          <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+        </div>
+      </div>
+    </div>
+
+    
+    <p id="lower-bar">
+      <a href="https://raw.githubusercontent.com/InkBoyM/KSF-Proxy/refs/heads/main/LICENSE.md" target="_blank">LICENSE</a> -
+      <a href="https://hcb.hackclub.com/donations/start/lvmlabs" target="_blank">Donate</a> -
+      <a href="https://discord.killsecurly.com/" target="_blank">Discord</a> -
+      <a href="/tos.html">TOS</a> -
+      <a href="/credits/">Credits</a>
+    </p>
+
+    
+    <div id="add-modal-overlay" onclick="closeAddModal()"></div>
+    <div id="add-modal">
+      <h2>Add Bookmark</h2>
+      <input id="modal-name" type="text" placeholder="Name (e.g. Google)" />
+      <input id="modal-url"  type="text" placeholder="URL (e.g. https://google.com)" />
+      <div id="modal-btns">
+        <button onclick="closeAddModal()">Cancel</button>
+        <button onclick="saveBookmark()">Add</button>
+      </div>
+    </div>
+
+    
+    <div id="ai-overlay" onclick="closeAIChat()"></div>
+    <div id="ai-panel">
+      <div id="ai-header">
+        <span>✦ AI Assistant</span>
+        <button onclick="closeAIChat()" id="ai-close-btn">✕</button>
+      </div>
+      <div id="ai-messages"></div>
+      <div id="ai-input-row">
+        <input id="ai-input" type="text" placeholder="Ask anything..." autocomplete="off" />
+        <button id="ai-send-btn" onclick="sendAIMessage()">
+          <i class="fa fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    
+    <div id="cmd-overlay" onclick="closeCommandPalette()"></div>
+    <div id="cmd-palette">
+      <input id="cmd-input" type="text" placeholder="Type a command or search..." autocomplete="off" />
+      <div id="cmd-results"></div>
+    </div>
+
+  </div>
+
+  <script src="password.js"></script>
+
+</body>
+</html>

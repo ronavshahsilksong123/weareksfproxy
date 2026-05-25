@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primary);
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+.search-box {
+  text-align: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.centerinput {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#uv-address {
+  width: 40vw;
+  text-align: center;
+  padding: 5px;
+  font-size: 14px;
+  height: 60px;
+  background: none;
+  padding: 0px 17px;
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  outline: none;
+  color: white;
+  transition-duration: 0.5s;
+}
+
+#uv-address:focus {
+  box-shadow: 0 0 30px var(--effects);
+}
+
+.title {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+  font-size: 7em;
+  margin: 0px;
+  margin-bottom: 5vh;
+  color: var(--h1);
+}
+
+.subtitle {
+  color: var(--text);
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+.w3-input {
+  color: var(--text);
+}
+::placeholder {
+  color: var(--text);
+}

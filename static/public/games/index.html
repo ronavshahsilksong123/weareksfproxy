@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KSF Games</title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/shared-page.css" />
+  <link rel="stylesheet" href="/global/loadingscreen.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+  <script src="/uv/uv.bundle.js" defer></script>
+  <script src="/uv/uv.config.js" defer></script>
+  <script src="/register-sw.js" defer></script>
+  <script src="openGame.js" defer></script>
+  <script src="/global/all.js" defer></script>
+</head>
+<body>
+  <div id="proxy-div" class="hide-proxy-div">
+    <iframe id="uv-frame"></iframe>
+  </div>
+
+  <div id="particles-js"></div>
+  <script src="/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js",{"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.4,"random":false},"size":{"value":3,"random":true},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.3,"width":1},"move":{"enable":true,"speed":4,"direction":"none","random":true,"out_mode":"out"}},"interactivity":{"detect_on":"window","events":{"onhover":{"enable":true,"mode":"push"},"resize":true},"modes":{"push":{"particles_nb":3}}},"retina_detect":true});
+  </script>
+
+  <a id="back-btn" href="/">&#8592; Home</a>
+
+  <p class="page-title">G a m e s</p>
+
+  <div class="page-search">
+    <input type="text" placeholder="Search games..." id="games-search-bar" oninput="searchGames(this)">
+  </div>
+
+  <div class="pages">
+    <b class="switch-page" onclick="currentPage -= 1; setGames(currentPage); setPageArrows()">&#8249; Prev</b>
+    <b class="page-number">1</b>
+    <b class="switch-page" onclick="currentPage += 1; setGames(currentPage); setPageArrows()">Next &#8250;</b>
+  </div>
+
+  <div class="main-content">
+    <div id="games-container"><p style="color:rgba(255,255,255,0.5);text-align:center;margin-top:40px;">Loading games...</p></div>
+  </div>
+
+  <div class="pages" style="position:relative;z-index:1;">
+    <b class="switch-page" onclick="currentPage -= 1; setGames(currentPage); setPageArrows(); scrollToTopOfGames()">&#8249; Prev</b>
+    <b class="page-number">1</b>
+    <b class="switch-page" onclick="currentPage += 1; setGames(currentPage); setPageArrows(); scrollToTopOfGames()">Next &#8250;</b>
+  </div>
+
+  <div class="loadcenter">
+    <div class="loading-container">
+      <div class="loading-text">
+        <span>L</span><span>O</span><span>A</span><span>D</span><span>I</span><span>N</span><span>G</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="loadGames.js" defer></script>
+</body>
+</html>

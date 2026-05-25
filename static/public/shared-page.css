@@ -1,0 +1,129 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Schoolbell&display=swap");
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #0F0F1A; color: white; font-family: Arial, Helvetica, sans-serif; }
+html, body { min-height: 100%; }
+
+#particles-js {
+  position: fixed; inset: 0;
+  background: #0F0F1A; z-index: 0;
+}
+
+#back-btn {
+  position: fixed; top: 18px; left: 20px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 8px 16px;
+  color: rgba(255,255,255,0.8); font-size: 14px;
+  cursor: pointer; z-index: 10;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+#back-btn:hover { background: rgba(255,255,255,0.13); transform: scale(1.04); color: white; }
+
+.page-title {
+  font-family: "Schoolbell", cursive;
+  font-size: 70px; text-align: center;
+  color: whitesmoke; margin: 0; padding-top: 30px;
+  position: relative; z-index: 1;
+}
+
+.page-search {
+  display: flex; justify-content: center;
+  margin: 18px 0 10px;
+  position: relative; z-index: 1;
+}
+.page-search input {
+  width: 380px; height: 44px;
+  backdrop-filter: blur(10px);
+  background: rgba(163,163,163,0.25);
+  border: none; border-radius: 30px;
+  padding: 0 20px; font-size: 15px;
+  color: white; outline: none; text-align: center;
+  transition: box-shadow 0.3s;
+}
+.page-search input:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.2), 0 0 24px rgba(130,80,255,0.35); }
+.page-search input::placeholder { color: rgba(255,255,255,0.45); }
+
+.pages {
+  text-align: center; margin: 8px 0;
+  position: relative; z-index: 1;
+  color: rgba(255,255,255,0.6);
+}
+.switch-page {
+  margin: 0 14px; cursor: pointer;
+  transition: color 0.2s;
+}
+.switch-page:hover { color: white; }
+.page-number { margin: 0 6px; }
+
+.main-content {
+  position: relative; z-index: 1;
+  padding: 0 40px 60px;
+  overflow-y: auto;
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+}
+
+#games-container, #apps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  padding: 10px 0;
+  max-width: 1200px;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.game, .app {
+  display: flex; flex-direction: column;
+  align-items: center;
+  background: rgba(32,32,40,0.55);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 12px 8px;
+  cursor: pointer;
+  width: 150px;
+  flex-shrink: 0;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  backdrop-filter: blur(8px);
+}
+.game:hover, .app:hover {
+  transform: scale(1.06);
+  background: rgba(50,50,70,0.7);
+  box-shadow: 0 0 24px rgba(120,80,200,0.35);
+}
+
+.game-image-container, .app-image-container {
+  width: 100%; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; border-radius: 10px; margin-bottom: 8px;
+}
+.game-image, .app-image {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: 10px;
+}
+.game-title, .app-title {
+  font-size: 13px; color: rgba(255,255,255,0.85);
+  text-align: center; margin: 0;
+}
+
+@keyframes show-proxy-div { from{bottom:-100vh;top:100vh} to{bottom:0;top:0} }
+@keyframes hide-proxy-div { from{bottom:0;top:0;display:block} to{bottom:-100vh;top:100vh;display:block} }
+.hide-proxy-div {
+  display:none; position:fixed; inset:0;
+  width:100vw; height:100vh;
+  background:#000; animation:hide-proxy-div 0.5s; z-index:100;
+}
+.show-proxy-div {
+  display:block; position:fixed; inset:0;
+  width:100vw; height:100vh;
+  background:white; animation:show-proxy-div 0.5s; z-index:100;
+}
+#uv-frame { height:100vh; width:100vw; border:none; }
+
+.loadcenter { position:fixed; inset:0; pointer-events:none; z-index:200; }
