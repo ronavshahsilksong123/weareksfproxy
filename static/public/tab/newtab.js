@@ -10,3 +10,11 @@ form.addEventListener("submit", async (event) => {
   
     location.href = "/tab?page=" + __uv$config.encodeUrl(url);
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const stored = localStorage.getItem("ksf_search_engine");
+    if (stored) {
+        const se = document.getElementById("uv-search-engine");
+        if (se) se.value = stored;
+    }
+});

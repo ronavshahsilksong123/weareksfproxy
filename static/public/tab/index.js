@@ -122,4 +122,13 @@ async function startProxy() {
     document.getElementById("https-lock").innerText = "pending";
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const stored = localStorage.getItem("ksf_search_engine");
+    if (stored) {
+        const se = document.getElementById("uv-search-engine");
+        if (se) se.value = stored;
+    }
+});
+
 startProxy();

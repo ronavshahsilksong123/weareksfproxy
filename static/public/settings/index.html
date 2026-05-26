@@ -68,7 +68,7 @@
         </div>
       </div>
     </div>
-
+  </div>
   <script src="index.js" defer></script>
   <script>
     const seNames = { google:"Google", bing:"Bing", duckduckgo:"DuckDuckGo", brave:"Brave", yahoo:"Yahoo", ecosia:"Ecosia" };
@@ -79,6 +79,7 @@
       localStorage.setItem("ksf_search_engine", template);
       localStorage.setItem("ksf_search_engine_name", name);
       document.getElementById("se-label").textContent = (seNames[name] || name) + " \u25be";
-    }    }  </script>
+    }
+  </script>
 </body>
 </html>
